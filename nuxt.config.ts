@@ -1,11 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
   modules: [
-    '@unocss/nuxt',
+    "@unocss/nuxt",
+    "@nuxt/eslint",
   ],
+  devtools: { enabled: true },
   css: [
-    '@unocss/reset/tailwind.css'
-  ]
-})
+    "@unocss/reset/tailwind.css",
+  ],
+  compatibilityDate: "2024-04-03",
+  eslint: {
+    config: {
+      stylistic: {
+        indent: 2,
+        quotes: "double",
+        semi: true,
+      },
+    },
+  },
+});
