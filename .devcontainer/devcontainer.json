@@ -6,7 +6,7 @@
   "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
   "features": {
     "ghcr.io/devcontainers-extra/features/pnpm:2": {}
-  }
+  },
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {},
@@ -22,4 +22,12 @@
 
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
   // "remoteUser": "root"
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vue.volar"
+      ]
+    }
+  }
 }
