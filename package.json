@@ -11,6 +11,13 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
+  "prisma": {
+    "seed": "pnpm dlx tsx prisma/seed.ts"
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
   "dependencies": {
     "@nuxt/eslint": "^0.7.1",
     "@prisma/nuxt": "^0.1.0",
