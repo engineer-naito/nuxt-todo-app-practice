@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   modules: [
     "@unocss/nuxt",
     "@nuxt/eslint",
+    "@prisma/nuxt",
   ],
   devtools: { enabled: true },
   css: [
