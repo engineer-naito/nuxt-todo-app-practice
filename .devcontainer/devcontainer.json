@@ -27,7 +27,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "vue.volar",
+        "vue.volar@2.1.8", // 最新だと Intellisense が効かなかった
         "antfu.unocss",
         "prisma.prisma"
       ]
