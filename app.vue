@@ -2,6 +2,7 @@
 const { data: todos, status, error, refresh } = await useFetch("/api/todos");
 
 const newTodoTitle = ref("");
+const pendingOrIdle = computed(() => status.value in ["pending", "idle"]);
 
 const createTodo = async () => {
   if (!newTodoTitle.value.trim()) {
@@ -40,7 +41,7 @@ const createTodo = async () => {
       Todos
     </h1>
 
-    <div v-if="status in ['pending', 'idle']">
+    <div v-if="pendingOrIdle">
       Loading...
     </div>
     <div v-else-if="error">
