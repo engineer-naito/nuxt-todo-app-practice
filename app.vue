@@ -84,6 +84,21 @@ async function createTodo() {
     console.error(err);
   }
 };
+
+async function deleteTodo(id: number) {
+  try {
+    await useFetch(`/api/todos/${id}`, {
+      method: "DELETE",
+    });
+
+    await refresh();
+    cancelEdit();
+  }
+  catch (error) {
+    console.error("Todo の更新に失敗しました。", error);
+    alert("Todo の更新に失敗しました。");
+  }
+}
 </script>
 
 <template>
@@ -144,9 +159,30 @@ async function createTodo() {
           </button>
         </div>
 
-        <template v-else>
-          <span @dblclick="startEdit(todo.id, todo.title)">{{ todo.title }}</span>
-        </template>
+        <div
+          v-else
+          flex
+          gap-4
+        >
+          <span
+            flex-1
+            max-w-xs
+            @dblclick="startEdit(todo.id, todo.title)"
+          >{{ todo.title }}</span>
+          <button
+            type="button"
+            p-2
+            bg-red
+            text-white
+            rounded
+            text-2xl
+            hover:bg-red-500
+            focus:outline-none
+            @click="deleteTodo(todo.id)"
+          >
+            削除
+          </button>
+        </div>
       </li>
 
       <li>
