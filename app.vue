@@ -48,34 +48,48 @@ const createTodo = async () => {
       Error: {{ error.message }}
     </div>
 
-    <ul v-else>
+    <ul
+      v-else
+      w-full
+      max-w-md
+      space-y-2
+      text-4xl
+    >
       <li
         v-for="todo in todos"
         :key="todo.id"
-        text-4xl
       >
         {{ todo.title }}
       </li>
-    </ul>
 
-    <form
-      class="mt-8"
-      @submit.prevent="createTodo"
-    >
-      <input
-        v-model="newTodoTitle"
-        type="text"
-        placeholder="新しいTodoを入力"
-        class="p-2 border rounded"
-        text-2xl
-      >
-      <button
-        type="submit"
-        class="ml-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        text-2xl
-      >
-        追加
-      </button>
-    </form>
+      <li>
+        <form
+          flex
+          gap-4
+          @submit.prevent="createTodo"
+        >
+          <input
+            v-model="newTodoTitle"
+            type="text"
+            placeholder="new Todo"
+            flex-1
+            max-w-xs
+            focus:outline-none
+            focus:text-green
+          >
+          <button
+            type="submit"
+            p-2
+            bg-green
+            text-white
+            rounded
+            text-2xl
+            hover:bg-green-500
+          >
+            追加
+          </button>
+        </form>
+      </li>
+    </ul>
   </div>
 </template>
