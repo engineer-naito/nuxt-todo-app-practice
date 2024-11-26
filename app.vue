@@ -206,8 +206,10 @@ async function addTodo() {
         <form
           flex
           gap-4
+          items-center
           @submit.prevent="addTodo"
         >
+          <div w-6 />
           <input
             v-model="newTodoTitle"
             type="text"
