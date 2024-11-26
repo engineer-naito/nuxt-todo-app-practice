@@ -1,20 +1,33 @@
 <script setup lang="ts">
-const { data: todos, status, error, refresh } = await useFetch("/api/todos");
+const {
+  todos,
+  errorMessage,
+  isLoading,
+  readTodos,
+  createTodo,
+  updateTodo,
+  deleteTodo,
+} = useTodos();
 
 const newTodoTitle = ref("");
-const pendingOrIdle = computed(() => status.value in ["pending", "idle"]);
-
 const todoIdInEdit = ref<number | null>(null);
 const todoTitleInEdit = ref<string | null>(null);
+const todoDoneInEdit = ref<boolean | null>(null);
 
-function startEdit(id: number, title: string) {
+onMounted(async () => {
+  await readTodos();
+});
+
+function startEdit(id: number, title: string, done: boolean) {
   todoIdInEdit.value = id;
   todoTitleInEdit.value = title;
-};
+  todoDoneInEdit.value = done;
+}
 
 function cancelEdit() {
   todoIdInEdit.value = null;
   todoTitleInEdit.value = null;
+  todoDoneInEdit.value = null;
 }
 
 const handleKeydown = (event: KeyboardEvent) => {
@@ -40,64 +53,52 @@ onUnmounted(() => {
   document.removeEventListener("click", handleClickOutside);
 });
 
-async function updateTodo(id: number) {
+async function saveTodo() {
   if (!todoTitleInEdit.value?.trim()) {
     alert("タイトルを入力してください。");
     return;
   }
 
-  try {
-    await useFetch(`/api/todos/${id}`, {
-      method: "PATCH",
-      body: { title: todoTitleInEdit.value },
-    });
+  if (todoIdInEdit.value !== null) {
+    try {
+      await updateTodo(todoIdInEdit.value, todoTitleInEdit.value, false);
 
-    await refresh();
-    cancelEdit();
-  }
-  catch (error) {
-    console.error("Todo の更新に失敗しました。", error);
-    alert("Todo の更新に失敗しました。");
+      const index = todos.value.findIndex(todo => todo.id === todoIdInEdit.value);
+      if (index !== -1) {
+        todos.value[index].title = todoTitleInEdit.value;
+      }
+
+      cancelEdit();
+    }
+    catch (errorMessage) {
+      console.error("Todo の更新に失敗しました。", errorMessage);
+      alert("Todo の更新に失敗しました。");
+    }
   }
 }
 
-async function createTodo() {
+async function toggleDone(id: number, done: boolean) {
+  try {
+    await updateTodo(id, "", !done);
+    const index = todos.value.findIndex(todo => todo.id === id);
+    if (index === -1) {
+      todos.value[index].done = !done;
+    }
+  }
+  catch (errorMessage) {
+    console.error("Todo の状態切り替えに失敗しました。", errorMessage);
+    alert("Todo の状態切り替えに失敗しました。");
+  }
+}
+
+async function addTodo() {
   if (!newTodoTitle.value.trim()) {
     alert("タイトルを入力してください");
     return;
   }
 
-  try {
-    const { data: createdTodo } = await useFetch("/api/todos", {
-      method: "POST",
-      body: { title: newTodoTitle.value },
-    });
-
-    if (createdTodo.value) {
-      todos.value = [...(todos.value || []), createdTodo.value];
-    }
-    newTodoTitle.value = "";
-    refresh();
-  }
-  catch (err) {
-    alert("Todoの作成に失敗しました");
-    console.error(err);
-  }
-};
-
-async function deleteTodo(id: number) {
-  try {
-    await useFetch(`/api/todos/${id}`, {
-      method: "DELETE",
-    });
-
-    await refresh();
-    cancelEdit();
-  }
-  catch (error) {
-    console.error("Todo の更新に失敗しました。", error);
-    alert("Todo の更新に失敗しました。");
-  }
+  await createTodo(newTodoTitle.value);
+  newTodoTitle.value = "";
 }
 </script>
 
@@ -113,11 +114,11 @@ async function deleteTodo(id: number) {
       Todos
     </h1>
 
-    <div v-if="pendingOrIdle">
+    <div v-if="isLoading">
       Loading...
     </div>
-    <div v-else-if="error">
-      Error: {{ error.message }}
+    <div v-else-if="errorMessage">
+      Error: {{ errorMessage }}
     </div>
     <ul
       v-else
@@ -138,6 +139,13 @@ async function deleteTodo(id: number) {
           class="todo-edit"
         >
           <input
+            v-model="todo.done"
+            type="checkbox"
+            w-6
+            h-6
+            @change="toggleDone(todo.id, todo.done)"
+          >
+          <input
             v-model="todoTitleInEdit"
             type="text"
             text-green
@@ -153,22 +161,31 @@ async function deleteTodo(id: number) {
             text-white
             rounded
             hover:bg-green-500
-            @click="updateTodo(todo.id)"
+            @click="saveTodo"
           >
             保存
           </button>
         </div>
-
         <div
           v-else
           flex
           gap-4
         >
+          <input
+            v-model="todo.done"
+            type="checkbox"
+            w-6
+
+            @change="toggleDone(todo.id, todo.done)"
+          >
           <span
             flex-1
             max-w-xs
-            @dblclick="startEdit(todo.id, todo.title)"
-          >{{ todo.title }}</span>
+            :class="{ 'line-through decoration-green': todo.done }"
+            @dblclick="startEdit(todo.id, todo.title, todo.done)"
+          >
+            {{ todo.title }}
+          </span>
           <button
             type="button"
             p-2
@@ -189,8 +206,10 @@ async function deleteTodo(id: number) {
         <form
           flex
           gap-4
-          @submit.prevent="createTodo"
+          items-center
+          @submit.prevent="addTodo"
         >
+          <div w-6 />
           <input
             v-model="newTodoTitle"
             type="text"
