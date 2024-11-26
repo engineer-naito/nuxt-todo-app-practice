@@ -1,8 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { defineNuxtConfig } from "nuxt/config";
+
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01',
+  modules: ["@nuxt/eslint"],
   devtools: { enabled: true },
+
   future: {
-    compatibilityVersion: 4
-  }
+    compatibilityVersion: 4,
+  },
+  compatibilityDate: "2024-11-01",
+  eslint: {
+    config: {
+      stylistic: {
+        indent: 2,
+        quotes: "double",
+        semi: true,
+      },
+    },
+  },
 });
