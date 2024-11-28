@@ -1,0 +1,44 @@
+<template>
+  <div>
+    <header
+      bg-white
+      shadow
+      mb-4
+    >
+      <nav
+        container
+        mx-auto
+        px-4
+        py-4
+        flex
+        justify-between
+        items-center
+      >
+        <NuxtLink
+          to="/"
+          text-xl
+          font-bold
+        >
+          Todos
+        </NuxtLink>
+        <div>
+          <button
+            px-4
+            py-2
+            bg-green-500
+            rounded
+          >
+            Sign Out
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main
+      container
+      mx-auto
+      px-4
+    >
+      <slot />
+    </main>
+  </div>
+</template>

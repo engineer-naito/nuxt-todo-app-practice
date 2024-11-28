@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     "@nuxt/eslint",
     "@prisma/nuxt",
     "@nuxtjs/supabase",
+    "@unocss/nuxt",
   ],
   devtools: { enabled: true },
   css: [
@@ -20,6 +21,13 @@ export default defineNuxtConfig({
         quotes: "double",
         semi: true,
       },
+    },
+  },
+  supabase: {
+    redirectOptions: {
+      login: "/login",
+      callback: "/todos",
+      exclude: ["/"],
     },
   },
 });
