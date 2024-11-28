@@ -11,9 +11,6 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
-  "prisma": {
-    "seed": "pnpm dlx tsx prisma/seed.ts"
-  },
   "dependencies": {
     "@nuxt/eslint": "^0.7.2",
     "@nuxtjs/supabase": "^1.4.3",
