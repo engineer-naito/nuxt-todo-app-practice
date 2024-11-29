@@ -1,0 +1,4 @@
+<template>
+  <NuxtRouteAnnouncer />
+  <NuxtWelcome />
+</template>
