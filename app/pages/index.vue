@@ -12,9 +12,7 @@
       text-4xl
       font-bold
       text-green-600
-    >
-      Hello From Route Page!
-    </h1>
+    />
     <NuxtLink
       to="/login/"
       text-lg
@@ -27,7 +25,7 @@
       hover:bg-green-600
       mt-4
     >
-      Login here
+      Sign In
     </NuxtLink>
   </div>
 </template>

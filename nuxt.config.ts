@@ -20,13 +20,14 @@ export default defineNuxtConfig({
         indent: 2,
         quotes: "double",
         semi: true,
+        blockSpacing: false,
       },
     },
   },
   supabase: {
     redirectOptions: {
       login: "/login",
-      callback: "/todos",
+      callback: "/confirm",
       exclude: ["/"],
     },
   },

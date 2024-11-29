@@ -1,3 +1,39 @@
+<script setup lang="ts">
+const user = useSupabaseUser();
+const supabase = useSupabaseClient();
+
+watchEffect(() => {
+  if (user.value) {
+    navigateTo("/confirm");
+  }
+});
+
+const email = ref("");
+const password = ref("");
+const error: Ref<string | null> = ref(null);
+
+async function handleSubmit() {
+  error.value = null;
+  try {
+    const { data, error: loginError } = await supabase.auth.signInWithPassword({
+      email: email.value,
+      password: password.value,
+    });
+    console.log("data", data);
+    console.log("error", loginError);
+    if (loginError) {
+      error.value = loginError.message;
+    }
+    const router = useRouter();
+    router.push("/confirm");
+  }
+  catch (err) {
+    error.value = "Error";
+    console.error(err);
+  }
+}
+</script>
+
 <template>
   <div>
     <h1
@@ -5,10 +41,11 @@
       font-bold
       mb-6
     >
-      Login
+      Sign In
     </h1>
     <form
       space-y-4
+      @submit.prevent="handleSubmit"
     >
       <div>
         <label
@@ -16,6 +53,7 @@
           mb-1
         >Email</label>
         <input
+          v-model="email"
           type="email"
           required
           w-full
@@ -31,6 +69,7 @@
           mb-1
         >Password</label>
         <input
+          v-model="password"
           type="password"
           required
           w-full
