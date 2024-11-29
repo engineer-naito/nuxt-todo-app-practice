@@ -4,7 +4,7 @@ const supabase = useSupabaseClient();
 
 watchEffect(() => {
   if (user.value) {
-    navigateTo("/confirm");
+    navigateTo("/todos");
   }
 });
 
@@ -25,7 +25,7 @@ async function handleSubmit() {
       error.value = loginError.message;
     }
     const router = useRouter();
-    router.push("/confirm");
+    router.push("/todos");
   }
   catch (err) {
     error.value = "Error";
