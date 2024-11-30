@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@nuxt/eslint", "@nuxtjs/supabase", "@unocss/nuxt", "@prisma/nuxt"],
+  modules: ["@nuxt/eslint", "@nuxtjs/supabase", "@unocss/nuxt"],
   devtools: { enabled: true },
   css: [
     "@unocss/reset/tailwind.css",
