@@ -14,18 +14,12 @@ importers:
       '@nuxtjs/supabase':
         specifier: 1.4.3
         version: 1.4.3
-      '@prisma/client':
-        specifier: 6.0.0
-        version: 6.0.0(prisma@6.0.0)
       '@unocss/reset':
         specifier: 0.65.0-beta.2
         version: 0.65.0-beta.2
       nuxt:
         specifier: ^3.14.1592
         version: 3.14.1592(@parcel/watcher@2.5.0)(@types/node@22.10.1)(eslint@9.15.0(jiti@2.4.1))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.27.4)(terser@5.36.0)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.1)(terser@5.36.0))
-      prisma:
-        specifier: ^6.0.0
-        version: 6.0.0
       vue:
         specifier: latest
         version: 3.5.13(typescript@5.7.2)
@@ -33,12 +27,18 @@ importers:
         specifier: latest
         version: 4.5.0(vue@3.5.13(typescript@5.7.2))
     devDependencies:
+      '@prisma/client':
+        specifier: 6.0.0
+        version: 6.0.0(prisma@6.0.0)
       '@unocss/nuxt':
         specifier: 0.65.0-beta.2
         version: 0.65.0-beta.2(magicast@0.3.5)(postcss@8.4.49)(rollup@4.27.4)(vite@5.4.11(@types/node@22.10.1)(terser@5.36.0))(vue@3.5.13(typescript@5.7.2))(webpack@5.96.1(esbuild@0.24.0))
       eslint:
         specifier: ^9.15.0
         version: 9.15.0(jiti@2.4.1)
+      prisma:
+        specifier: ^6.0.0
+        version: 6.0.0
       typescript:
         specifier: ^5.7.2
         version: 5.7.2
