@@ -28,7 +28,8 @@
     "vscode": {
       "extensions": [
         "vue.volar@2.1.8", // 最新だと Intellisense が効かなかった
-        "antfu.unocss"
+        "antfu.unocss",
+        "prisma.prisma"
       ]
     }
   }

@@ -14,8 +14,10 @@
   "dependencies": {
     "@nuxt/eslint": "0.7.2",
     "@nuxtjs/supabase": "1.4.3",
+    "@prisma/client": "6.0.0",
     "@unocss/reset": "0.65.0-beta.2",
     "nuxt": "^3.14.1592",
+    "prisma": "^6.0.0",
     "vue": "latest",
     "vue-router": "latest"
   },
