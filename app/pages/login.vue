@@ -22,6 +22,7 @@ async function handleSubmit() {
 
     if (loginError) {
       error.value = loginError.message;
+      return;
     }
     navigateTo("/todos");
   }
@@ -82,5 +83,11 @@ async function handleSubmit() {
         Login
       </button>
     </form>
+    <p
+      v-if="error"
+      class="text-red-500 text-lg mt-4"
+    >
+      {{ error }}
+    </p>
   </div>
 </template>
