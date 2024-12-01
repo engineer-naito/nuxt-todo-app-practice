@@ -11,16 +11,13 @@ const signOut = async () => {
   if (error) {
     console.error(error);
   }
+  navigateTo("/");
 };
 </script>
 
 <template>
   <div>
-    <header
-      bg-white
-      shadow
-      mb-4
-    >
+    <header class="bg-white shadow mb-4">
       <nav
         container
         mx-auto
@@ -31,8 +28,7 @@ const signOut = async () => {
       >
         <NuxtLink
           to="/"
-          text-xl
-          font-bold
+          class="text-xl font-bold"
         >
           Todos
         </NuxtLink>
@@ -58,11 +54,7 @@ const signOut = async () => {
         </div>
       </nav>
     </header>
-    <main
-      container
-      mx-auto
-      py-8
-    >
+    <main class="container mx-auto py-8">
       <slot />
     </main>
   </div>

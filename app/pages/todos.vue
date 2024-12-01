@@ -4,27 +4,36 @@ const { data: userProfile } = await useFetch("/api/userProfile", {
   method: "GET",
 });
 
-const { data: todos } = await useFetch("/api/todo", {
-  method: "GET",
-});
+const {
+  todos,
+  fetchTodos,
+  addTodo,
+  updateTodo,
+  deleteTodo,
+  startEditing,
+  stopEditing,
+} = useTodos();
+
+onMounted(() => fetchTodos());
 </script>
 
 <template>
-  <div
-    flex="~ col"
-    gap-8
-  >
+  <div class="flex flex-col items-center gap-8">
     <h1 text-6xl>
       <span text-green>{{ userProfile?.displayName }}</span>'s Todo
     </h1>
-    <ul>
-      <li
+    <ul class="divide-y divide-gray-100">
+      <TodoItem
         v-for="todo in todos"
-        :key="`todo-${todo.id}`"
-        text-4xl
-      >
-        {{ todo.title }}
-      </li>
+        :key="todo.id"
+        :todo
+        @update="(title) => updateTodo({ ...todo, title })"
+        @delete="deleteTodo(todo.id)"
+        @toggle="updateTodo({ ...todo, done: !todo.done })"
+        @start-edit="startEditing(todo.id)"
+        @stop-edit="stopEditing(todo.id)"
+      />
+      <TodoInput @add="addTodo" />
     </ul>
   </div>
 </template>

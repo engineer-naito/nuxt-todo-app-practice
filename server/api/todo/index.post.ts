@@ -11,16 +11,28 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  try {
-    const todos = await prisma.todo.findMany({
-      where: { userId: user.id },
+  const { title } = await readBody<{ title: string }>(event);
+
+  if (!title || title.trim() === "") {
+    throw createError({
+      statusCode: 400,
+      statusMessage: "Todo title is required",
     });
-    return todos;
+  }
+
+  try {
+    const newTodo = await prisma.todo.create({
+      data: {
+        title: title.trim(),
+        userId: user.id,
+      },
+    });
+    return newTodo;
   }
   catch (error) {
     throw createError({
       statusCode: 500,
-      statusMessage: "Failed to get todos",
+      statusMessage: "Failed to create todos",
       data: error,
     });
   }
