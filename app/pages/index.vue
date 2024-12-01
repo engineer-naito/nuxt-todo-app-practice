@@ -10,17 +10,17 @@
     <h1
       text-4xl
       font-bold
-      text-green-600
+      text-green
     />
     <NuxtLink
       to="/login/"
       text-lg
       text-white
-      bg-green-500
+      bg-green
       p="x-4 y-2"
       rounded
       shadow
-      hover:bg-green-600
+      hover:bg-green-500
       mt-4
     >
       Sign In

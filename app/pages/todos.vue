@@ -20,7 +20,7 @@ onMounted(() => fetchTodos());
 <template>
   <div class="flex flex-col items-center gap-8">
     <h1 text-6xl>
-      <span text-green>{{ userProfile?.displayName }}</span>'s Todo
+      {{ userProfile?.displayName }}<span text-green>'</span>s Todo
     </h1>
     <ul class="divide-y divide-gray-100 lg:min-w-4xl md:min-w-3xl sm:min-w-2xl">
       <TodoItem

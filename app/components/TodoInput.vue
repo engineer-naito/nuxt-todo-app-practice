@@ -1,7 +1,5 @@
 <script setup lang="ts">
-const emit = defineEmits<{
-  add: [value: string];
-}>();
+const emit = defineEmits<{ add: [value: string] }>();
 
 const newTodo = ref("");
 
@@ -31,7 +29,7 @@ function addTodo() {
       flex-1
       p="x-3 y-2"
       border-0
-      focus:="ring-0 outline-none"
+      focus:="ring-0 outline-none bg-gray-50"
       bg-gray-100
       hover:bg-gray-50
       @keyup.enter="addTodo"

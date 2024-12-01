@@ -60,7 +60,7 @@ onMounted(() => {
           autofocus
           @keyup.enter="saveEdit"
           @keyup.esc="$emit('stop-edit')"
-          @blur="saveEdit"
+          @blur="$emit('stop-edit')"
         >
         <button
           class="px-4 py-2 text-gray-400 bg-gray-100 rounded cursor-not-allowed"
@@ -69,7 +69,12 @@ onMounted(() => {
           Edit
         </button>
         <button
-          class="px-4 py-2 text-white bg-green rounded hover:bg-green-500 transition-colors"
+          p="x-4 y-2"
+          rounded
+          text-white
+          bg-green
+          hover:bg-green-500
+          transition-colors
           @click="saveEdit"
         >
           Save
@@ -86,13 +91,23 @@ onMounted(() => {
         {{ todo.title }}
       </span>
       <button
-        class="px-4 py-2 text-white bg-green rounded hover:bg-green-500 transition-colors"
+        p="x-4 y-2"
+        rounded
+        text-white
+        bg-green
+        hover:bg-green-500
+        transition-colors
         @click="startEdit"
       >
         Edit
       </button>
       <button
-        class="px-4 py-2 text-white bg-red rounded hover:bg-red-500 transition-colors"
+        p="x-4 y-2"
+        rounded
+        text-white
+        bg-red
+        hover:bg-red-500
+        transition-colors
         @click="$emit('delete')"
       >
         Delete
