@@ -44,6 +44,7 @@ onMounted(() => {
       :checked="todo.done"
       class="w-5 h-5 border-gray-300 accent-green"
       @change="$emit('toggle')"
+      @dblclick="startEdit"
     >
 
     <template v-if="todo.isEditing">

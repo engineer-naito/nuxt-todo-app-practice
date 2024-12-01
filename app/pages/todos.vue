@@ -22,7 +22,7 @@ onMounted(() => fetchTodos());
     <h1 text-6xl>
       <span text-green>{{ userProfile?.displayName }}</span>'s Todo
     </h1>
-    <ul class="divide-y divide-gray-100">
+    <ul class="divide-y divide-gray-100 lg:min-w-4xl md:min-w-3xl sm:min-w-2xl">
       <TodoItem
         v-for="todo in todos"
         :key="todo.id"
