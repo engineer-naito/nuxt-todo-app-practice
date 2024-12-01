@@ -52,7 +52,11 @@ onMounted(() => {
         <input
           ref="editInput"
           v-model.trim="editedTitle"
-          class="flex-1 px-3 py-2 border-0 focus:ring-0 focus:outline-none"
+          flex-1
+          p="x-3 y-2"
+          border-0
+          bg-gray-50
+          focus:="ring-0 outline-none bg-gray-50"
           autofocus
           @keyup.enter="saveEdit"
           @keyup.esc="$emit('stop-edit')"
