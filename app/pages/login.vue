@@ -34,29 +34,23 @@ async function handleSubmit() {
 
 <template>
   <div>
-    <h1
-      text-2xl
-      font-bold
-      mb-6
-    >
+    <h1 class="text-2xl font-bold mb-16">
       Sign In
     </h1>
     <form
-      space-y-4
+      space-y-8
+      p-8
+      border="~ green"
       @submit.prevent="handleSubmit"
     >
       <div>
-        <label
-          block
-          mb-1
-        >Email</label>
+        <label class="block mb-1">Email</label>
         <input
           v-model="email"
           type="email"
           required
           w-full
-          px-4
-          py-2
+          p="x-4 y-2"
           border
           rounded
         >
@@ -71,24 +65,22 @@ async function handleSubmit() {
           type="password"
           required
           w-full
-          px-4
-          py-2
+          p="x-4 y-2"
           border
           rounded
         >
       </div>
-      <div>
-        <button
-          type="submit"
-          w-full
-          px-4
-          py-2
-          bg-green-500
-          rounded
-        >
-          Login
-        </button>
-      </div>
+      <button
+        type="submit"
+        w-full
+        p="x-4 y-2"
+        bg-green
+        text-white
+        border
+        rounded
+      >
+        Login
+      </button>
     </form>
   </div>
 </template>

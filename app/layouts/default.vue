@@ -47,6 +47,7 @@ const signOut = async () => {
             to="/login"
             p="x-4 y-2"
             bg-green
+            text-white
             rounded
           >
             Sign In
