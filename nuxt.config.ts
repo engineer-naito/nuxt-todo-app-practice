@@ -1,15 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: [
-    "@unocss/nuxt",
-    "@nuxt/eslint",
-    "@prisma/nuxt",
-  ],
+  modules: ["@nuxt/eslint", "@nuxtjs/supabase", "@unocss/nuxt"],
   devtools: { enabled: true },
   css: [
     "@unocss/reset/tailwind.css",
   ],
-  compatibilityDate: "2024-04-03",
+  future: {
+    compatibilityVersion: 4,
+  },
+  compatibilityDate: "2024-11-01",
   eslint: {
     config: {
       stylistic: {
@@ -17,6 +16,14 @@ export default defineNuxtConfig({
         quotes: "double",
         semi: true,
       },
+    },
+  },
+  supabase: {
+    redirect: true,
+    redirectOptions: {
+      login: "/login",
+      callback: "/confirm",
+      exclude: ["/"],
     },
   },
 });

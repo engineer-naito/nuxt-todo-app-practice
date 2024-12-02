@@ -1,0 +1,29 @@
+<template>
+  <div
+    flex="~ col"
+    items-center
+    justify-center
+    gap-4xl
+    bg-gray-100
+    h-2xl
+  >
+    <h1
+      text-4xl
+      font-bold
+      text-green
+    />
+    <NuxtLink
+      to="/login/"
+      text-lg
+      text-white
+      bg-green
+      btn-p
+      rounded
+      shadow
+      hover:bg-green-500
+      mt-4
+    >
+      Sign In
+    </NuxtLink>
+  </div>
+</template>

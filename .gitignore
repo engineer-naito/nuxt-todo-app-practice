@@ -23,6 +23,5 @@ logs
 .env.*
 !.env.example
 
-# sqlite
-*.db
-*.db-journal
+# pnpm store?
+.pnpm-store
