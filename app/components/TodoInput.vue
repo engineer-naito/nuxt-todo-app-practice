@@ -27,7 +27,7 @@ function addTodo() {
     </template>
     <template #actions>
       <button
-        class="px-4 py-2 text-white bg-green rounded hover:bg-green-500 transition-colors"
+        class="btn-p text-white bg-green rounded hover:bg-green-500 transition-colors"
         @click="addTodo"
       >
         Add

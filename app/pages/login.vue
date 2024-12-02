@@ -51,7 +51,7 @@ async function handleSubmit() {
           type="email"
           required
           w-full
-          p="x-4 y-2"
+          btn-p
           border
           rounded
         >
@@ -66,7 +66,7 @@ async function handleSubmit() {
           type="password"
           required
           w-full
-          p="x-4 y-2"
+          btn-p
           border
           rounded
         >
@@ -74,7 +74,7 @@ async function handleSubmit() {
       <button
         type="submit"
         w-full
-        p="x-4 y-2"
+        btn-p
         bg-green
         text-white
         border

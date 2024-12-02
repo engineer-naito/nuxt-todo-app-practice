@@ -5,4 +5,7 @@ export default defineConfig({
     presetUno(),
     presetAttributify(),
   ],
+  shortcuts: {
+    "btn-p": "px-4 py-2",
+  },
 });

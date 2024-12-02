@@ -35,7 +35,7 @@ const signOut = async () => {
         <div>
           <button
             v-if="isAuthenticated"
-            p="x-4 y-2"
+            btn-p
             border="~ green"
             rounded
             @click="signOut"
@@ -45,7 +45,7 @@ const signOut = async () => {
           <NuxtLink
             v-else
             to="/login"
-            p="x-4 y-2"
+            btn-p
             bg-green
             text-white
             rounded

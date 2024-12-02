@@ -17,7 +17,7 @@
       text-lg
       text-white
       bg-green
-      p="x-4 y-2"
+      btn-p
       rounded
       shadow
       hover:bg-green-500
