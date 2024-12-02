@@ -6,17 +6,7 @@ export interface Todo {
 }
 
 export default function () {
-  const todos = ref<Todo[]>([]);
-
-  const fetchTodos = async () => {
-    try {
-      const data = await $fetch<Todo[]>("/api/todo", { method: "GET" });
-      todos.value = data.map(todo => ({ ...todo, isEditing: false }));
-    }
-    catch (error) {
-      console.error("Failed to fetch todos:", error);
-    }
-  };
+  const todos = useState<Todo[]>("todos", () => []);
 
   const addTodo = async (title: string) => {
     try {
@@ -32,6 +22,7 @@ export default function () {
   };
 
   const updateTodo = async (todo: Todo) => {
+    console.log("updating");
     try {
       const { isEditing, ...todoData } = todo;
       const updated = await $fetch<Todo>(`/api/todo/${todo.id}`, {
@@ -71,7 +62,6 @@ export default function () {
 
   return {
     todos,
-    fetchTodos,
     addTodo,
     updateTodo,
     deleteTodo,

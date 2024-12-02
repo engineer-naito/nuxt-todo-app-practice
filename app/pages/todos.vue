@@ -6,7 +6,6 @@ const { data: userProfile } = await useFetch("/api/userProfile", {
 
 const {
   todos,
-  fetchTodos,
   addTodo,
   updateTodo,
   deleteTodo,
@@ -14,7 +13,15 @@ const {
   stopEditing,
 } = useTodos();
 
-onMounted(() => fetchTodos());
+const { data: fetchedTodos } = await useFetch("/api/todo", {
+  method: "GET",
+  transform: (data: Todo[]) => data.map(todo => ({ ...todo, isEditing: false })),
+  headers: useRequestHeaders(["cookie"]),
+});
+
+if (fetchedTodos.value) {
+  todos.value = fetchedTodos.value;
+}
 </script>
 
 <template>

@@ -24,10 +24,7 @@ function startEdit() {
 }
 
 function saveEdit() {
-  console.log(editedTitle.value);
-  console.log(props.todo);
   if (editedTitle.value.trim() && editedTitle.value !== props.todo.title) {
-    console.log("save...");
     emit("update", editedTitle.value.trim());
   }
   emit("stop-edit");
@@ -63,7 +60,6 @@ onMounted(() => {
           autofocus
           @keyup.enter="saveEdit"
           @keyup.esc="$emit('stop-edit')"
-          @blur="$emit('stop-edit')"
         >
         <button
           class="btn-p text-gray-400 bg-gray-100 rounded cursor-not-allowed"
