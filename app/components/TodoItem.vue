@@ -66,7 +66,7 @@ onMounted(() => {
           class="px-4 py-2 text-gray-400 bg-gray-100 rounded cursor-not-allowed"
           disabled
         >
-          Edit
+          Editing
         </button>
         <button
           p="x-4 y-2"
