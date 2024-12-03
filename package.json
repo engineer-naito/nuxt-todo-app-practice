@@ -21,10 +21,11 @@
   },
   "packageManager": "pnpm@9.14.4+sha512.c8180b3fbe4e4bca02c94234717896b5529740a6cbadf19fa78254270403ea2f27d4e1d46a08a0f56c89b63dc8ebfd3ee53326da720273794e6200fcf0d184ab",
   "devDependencies": {
-    "prisma": "^6.0.0",
     "@prisma/client": "6.0.0",
     "@unocss/nuxt": "0.65.0-beta.2",
     "eslint": "^9.15.0",
+    "prisma": "^6.0.0",
+    "supabase": "^1.226.3",
     "typescript": "^5.7.2",
     "unocss": "0.65.0-beta.2"
   }
