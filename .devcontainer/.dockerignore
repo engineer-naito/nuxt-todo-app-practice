@@ -3,3 +3,6 @@ node_modules
 .gitignore
 *.md
 dist
+.nuxt
+.output
+.env

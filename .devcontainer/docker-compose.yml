@@ -5,12 +5,11 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ..:/workspace
+      - ..:/workspace:cached
+      - /workspace/node_modules
     stdin_open: true
     working_dir: "/workspace"
     ports:
       - "3000:3000"
     environment:
       NODE_ENV: development
-    tty: true
-    privileged: true
