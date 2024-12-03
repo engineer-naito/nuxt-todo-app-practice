@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Todo } from "~/composables/useTodos";
+
 const { data: userProfile } = await useFetch("/api/userProfile", {
   pick: ["displayName"],
   method: "GET",
@@ -29,7 +31,12 @@ if (fetchedTodos.value) {
     <h1 text-6xl>
       {{ userProfile?.displayName }}<span text-green>'</span>s Todo
     </h1>
-    <ul class="divide-y divide-gray-100 lg:min-w-4xl md:min-w-3xl sm:min-w-2xl">
+    <ul
+      divide="y gray-100"
+      lg:min-w-4xl
+      md:min-w-3xl
+      sm:min-w-2xl
+    >
       <TodoItem
         v-for="todo in todos"
         :key="todo.id"
