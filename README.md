@@ -118,9 +118,9 @@ https://github.com/kosuke222naito/nuxt-todo-app-practice
 6. `UserProfile` テーブルにユーザに対応するレコードを追加する
     1. Supabase Studio などで、Authentication の `Users` または `/supabase/seed.sql` の内容を確認する
 
-    2. 1. の内容をもとに、`UserProfile` にレコードを追加する
-      `Users.UID` と `UserProfile.userId` が紐づく
-      `userId`, `displayName`, `createdAt`, `updatedAt` は必須入力
+    2. 1.の内容をもとに、`UserProfile` にレコードを追加する
+      - `Users.UID` と `UserProfile.userId` が紐づく
+      - `userId`, `displayName`, `createdAt`, `updatedAt` は必須入力
 
 
 ## 開発サーバ起動
