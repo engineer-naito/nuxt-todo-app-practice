@@ -28,12 +28,14 @@
 ### Docker
 
 - Docker Desktop for Mac のインストール
+
 https://matsuand.github.io/docs.docker.jp.onthefly/desktop/mac/install/
 
 
 ### Supabase
 
 - Supabase のアカウント登録(サインアップ)
+
 https://supabase.com/
 
 
@@ -43,12 +45,14 @@ https://supabase.com/
 ### VS Code
 
 - 拡張機能『Dev Containers』をインストール
+
 https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers
 
 
 ## 環境構築
 
 1. GitHub からリポジトリをクローン
+
 https://github.com/kosuke222naito/nuxt-todo-app-practice
 
     ```bash
