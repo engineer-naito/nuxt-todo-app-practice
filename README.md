@@ -58,46 +58,51 @@ https://github.com/kosuke222naito/nuxt-todo-app-practice
 2. VS Code で Dev Container を起動
     1. VS Code でプロジェクトを開く
     2. Dev Container 起動
+
       c.f.
       ![](https://microsoft.github.io/vscode-remote-release/images/remote-containers-readme.gif)
 
 3. VS Code のターミナルなどでコンテナ内 `workspace` ディレクトリに移動
 
 4. Supabase の設定
-  1. ブラウザで Supabase にサインイン状態でターミナルで以下を入力
-    ```bash
-    $ pnpm supabase login
-    ```
-  2. ターミナルに表示されるリンク先からアクセストークンを取得し、入力する
-  3. Supabase コンテナを作成、起動する
-    ```bash
-    $ pnpm supabase start
-    ```
-    ※初回は時間がかかる
-  4. 3.完了後、ターミナルに表示される情報をメモっておく
+   　1. ブラウザで Supabase にサインイン状態でターミナルで以下を入力
 
-    ```
-    API URL: http://127.0.0.1:54321
-    GraphQL URL: http://127.0.0.1:54321/graphql/v1
-    S3 Storage URL: http://127.0.0.1:54321/storage/v1/s3
-    DB URL: postgresql://postgres:postgres@127.0.0.1:54322/postgres
-    Studio URL: http://127.0.0.1:54323
-    Inbucket URL: http://127.0.0.1:54324
-    JWT secret: *****
-    anon key: *****
-    service_role key: *****
-    S3 Access Key: *****
-    S3 Secret Key: *****
-    S3 Region: local
-    ```
+      ```bash
+      $ pnpm supabase login
+      ```
+    2. ターミナルに表示されるリンク先からアクセストークンを取得し、入力する
+    3. Supabase コンテナを作成、起動する
 
-  5. プロジェクト直下に `.env.example` を参考に `.env` を作成する
-    ```.env
-    SUPABASE_URL="{API URL}"
-    SUPABASE_KEY="{anon_key}"
+      ```bash
+      $ pnpm supabase start
+      ```
 
-    DATABASE_URL="{DB URL}"
-    ```
+      ※初回は時間がかかる
+
+    4. 3.完了後、ターミナルに表示される情報をメモっておく
+
+      ```
+      API URL: http://127.0.0.1:54321
+      GraphQL URL: http://127.0.0.1:54321/graphql/v1
+      S3 Storage URL: http://127.0.0.1:54321/storage/v1/s3
+      DB URL: postgresql://postgres:postgres@127.0.0.1:54322/postgres
+      Studio URL: http://127.0.0.1:54323
+      Inbucket URL: http://127.0.0.1:54324
+      JWT secret: *****
+      anon key: *****
+      service_role key: *****
+      S3 Access Key: *****
+      S3 Secret Key: *****
+      S3 Region: local
+      ```
+
+    5. プロジェクト直下に `.env.example` を参考に `.env` を作成する
+      ```
+      SUPABASE_URL="{API URL}"
+      SUPABASE_KEY="{anon_key}"
+
+      DATABASE_URL="{DB URL}"
+      ```
 
 5. Prisma の設定
     1. Prisma クライアントの生成
