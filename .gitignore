@@ -25,3 +25,6 @@ logs
 
 # pnpm store?
 .pnpm-store
+
+# WIP: unknown dir tsx-* generated
+tsx-*
