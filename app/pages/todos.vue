@@ -22,6 +22,25 @@ const { data: fetchedTodos } = await useFetch("/api/todo", {
 if (fetchedTodos.value) {
   todos.value = fetchedTodos.value;
 }
+
+const scrollToBottom = (element: HTMLUListElement | null): void => {
+  if (element) {
+    element.scrollTop = element.scrollHeight;
+  }
+};
+
+const todosUl = useTemplateRef("todosUl");
+
+onMounted(async () => {
+  await nextTick();
+  scrollToBottom(todosUl.value);
+});
+
+watch(todos, () => {
+  nextTick(() => {
+    scrollToBottom(todosUl.value);
+  });
+}, { deep: true });
 </script>
 
 <template>
@@ -29,7 +48,16 @@ if (fetchedTodos.value) {
     <h1 text-6xl>
       {{ userProfile?.displayName }}<span text-green>'</span>s Todo
     </h1>
-    <ul class="divide-y divide-gray-100 lg:min-w-4xl md:min-w-3xl sm:min-w-2xl">
+    <ul
+      ref="todosUl"
+      overflow-y-auto
+      max-h-120
+      divide-y
+      divide-gray-100
+      lg:min-w-4xl
+      md:min-w-3xl
+      sm:min-w-2xl
+    >
       <TodoItem
         v-for="todo in todos"
         :key="todo.id"
