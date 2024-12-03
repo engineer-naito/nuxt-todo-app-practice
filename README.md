@@ -59,7 +59,7 @@ https://github.com/kosuke222naito/nuxt-todo-app-practice
     1. VS Code でプロジェクトを開く
     2. Dev Container 起動
       c.f.
-      ![alt text](https://microsoft.github.io/vscode-remote-release/images/remote-containers-readme.gif)
+      ![](https://microsoft.github.io/vscode-remote-release/images/remote-containers-readme.gif)
 
 3. VS Code のターミナルなどでコンテナ内 `workspace` ディレクトリに移動
 
