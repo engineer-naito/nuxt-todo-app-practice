@@ -116,7 +116,7 @@ https://github.com/kosuke222naito/nuxt-todo-app-practice
     ```
 
     3. マイグレーションの成功を確認する
-      1. `localhost:54323` (Supabase Studio) でサイドバーから　Table Editor を開く(`http://localhost:54323/project/default/editor`)
+      1. `localhost:54323` (Supabase Studio) でサイドバーから Table Editor を開く(`http://localhost:54323/project/default/editor`)
 
       2. `UserProfile`, `Todo` テーブルが表示されていることを確認する
 
